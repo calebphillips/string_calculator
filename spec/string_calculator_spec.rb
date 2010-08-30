@@ -7,7 +7,7 @@ Spec::Matchers.define :add_to do |expected|
   end
 
   failure_message_for_should do |string|
-    "Expected #{string} to add up to #{expected}, but go #{@result}"
+    "Expected #{string} to add up to #{expected}, but got #{@result}"
   end
 end
 
