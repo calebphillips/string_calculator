@@ -50,7 +50,7 @@ describe StringCalculator, "#add" do
   end
 
   context "many numbers" do
-    it "returns #{20*100} for 100 20's" do
+    it "returns 2000 for 100 20's" do
       (["20"]*100).join(",").should add_to(20*100)
     end
   end
@@ -59,12 +59,18 @@ describe StringCalculator, "#add" do
     "1\n2".should add_to(3)
   end
 
-  it "supports mixed delimiters" do
+  it "supports mixing newline and comma" do
     "1\n2,10".should add_to(13)
   end
 
-  it "supports alternate delimiter" do
-    "//;1;2;3".should add_to(6)
+  context "supports custom delimiters" do
+    it "allows the semicolon" do
+      "//;\n1;2;3".should add_to(6)
+    end
+
+    it "allows a letter" do
+      "//x\n45x55x65".should add_to(165)
+    end 
   end
 
   context "negative numbers" do
