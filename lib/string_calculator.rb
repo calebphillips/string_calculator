@@ -1,10 +1,9 @@
 module StringCalculator
-  DEFAULT_DELIMITER = ','
 
   def add
     return 0 if empty?
     raise_if_negatives
-    return digits.inject {|sum, x| sum + x }
+    digits.reduce {|sum, x| sum + x }
   end
 
   def raise_if_negatives
@@ -20,7 +19,7 @@ module StringCalculator
   end
 
   def delimiter
-    @delimiter ||= has_custom_delimiter? ? custom_delimiter : DEFAULT_DELIMITER
+    @delimiter ||= has_custom_delimiter? ? custom_delimiter : ','
   end
 
   def has_custom_delimiter?
