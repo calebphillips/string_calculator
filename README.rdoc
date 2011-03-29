@@ -5,10 +5,10 @@ This is a repository that can be used as a starting point for doing the String C
 There are 3 main branches:
 * master
   This is the full implementation of the specs and string calculator.
-* examples
+* specs_only
   This branch has all the specs implemented and the shell of the StringCalculator
   module.  Make 'em pass!
-* Functionish
+* functionish
   This is an alternate implementation of the algorithm which relies a little more on regex and the
   ruby collection methods to give it a more functional feel.
 
