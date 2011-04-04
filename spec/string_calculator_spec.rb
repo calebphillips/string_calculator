@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-Spec::Matchers.define :add_to do |expected|
+RSpec::Matchers.define :add_to do |expected|
   match do |string|
     (@result = string.extend(StringCalculator).add) == expected
   end
