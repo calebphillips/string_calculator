@@ -6,7 +6,7 @@ There are 3 main branches:
 ### master
 This is the full implementation of the specs and string calculator.
 
-### examples 
+### specs_only 
 This branch has all the specs implemented and the shell of the StringCalculator module.
 Make 'em pass!
 
