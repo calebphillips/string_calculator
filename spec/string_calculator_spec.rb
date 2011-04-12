@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'string_calculator'
 
 RSpec::Matchers.define :add_to do |expected|
   match do |string|
@@ -11,10 +11,6 @@ RSpec::Matchers.define :add_to do |expected|
 end
 
 describe StringCalculator, "#add" do
-  it "returns 0 for empty string" do
-    "".should add_to(0)
-  end
-
   context "single number" do
     it "returns 0 for 0" do
       "0".should add_to(0)
@@ -51,19 +47,21 @@ describe StringCalculator, "#add" do
 
   context "many numbers" do
     it "returns 2000 for 100 20's" do
-      (["20"]*100).join(",").should add_to(20*100)
+      (["20"]*100).join(",").should add_to(2000)
     end
   end
 
-  it "supports newline as delimiter" do
-    "1\n2".should add_to(3)
+  context "newlines as delimiters" do
+    it "supports newlines" do
+      "1\n2".should add_to(3)
+    end
+
+    it "supports mixing newline and comma" do
+      "1\n2,10".should add_to(13)
+    end
   end
 
-  it "supports mixing newline and comma" do
-    "1\n2,10".should add_to(13)
-  end
-
-  context "supports custom delimiters" do
+  context "custom delimiters" do
     it "allows the semicolon" do
       "//;\n1;2;3".should add_to(6)
     end
@@ -78,7 +76,7 @@ describe StringCalculator, "#add" do
       lambda { "-1".extend(StringCalculator).add }.should raise_error
     end
 
-    it "includes the numbers in the error" do
+    it "includes the negatives in the error message" do
       lambda {"-1,2,-25".extend(StringCalculator).add }.should raise_error("Negatives not allowed: -1, -25")
     end
   end

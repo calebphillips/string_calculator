@@ -15,7 +15,7 @@ module StringCalculator
   end
 
   def digits
-    gsub("\n",delimiter).split(delimiter).map{|x| x.to_i}
+    @digits ||= gsub("\n",delimiter).split(delimiter).map{|x| x.to_i}
   end
 
   def delimiter
@@ -27,6 +27,6 @@ module StringCalculator
   end
 
   def custom_delimiter
-    self[2,1]
+    self[2]
   end
 end
