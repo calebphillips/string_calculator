@@ -11,11 +11,11 @@ RSpec::Matchers.define :add_to do |expected|
 end
 
 describe StringCalculator, "#add" do
-  context "single number" do
-    it "returns 0 for 0" do
-      "0".should add_to(0)
-    end
+  it "returns 0 for the empty string" do
+    "".should add_to(0)
+  end
 
+  context "single number" do
     it "returns 5 for 5" do
       "5".should add_to(5)
     end
