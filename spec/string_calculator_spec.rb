@@ -47,7 +47,7 @@ describe StringCalculator, "#add" do
 
   context "many numbers" do
     it "returns 2000 for 100 20's" do
-      (["20"]*100).join(",").should add_to(2000)
+      (["20"]*100).join(',').should add_to(2000)
     end
   end
 

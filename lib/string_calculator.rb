@@ -3,11 +3,11 @@ module StringCalculator
   def add
     return 0 if empty?
     raise_if_negatives
-    digits.reduce {|sum, x| sum + x }
+    digits.reduce {|sum,d| sum + d}
   end
 
   def raise_if_negatives
-    raise "Negatives not allowed: #{negatives.join(", ")}" unless negatives.empty?
+    raise "Negatives not allowed: #{negatives.join(', ')}" if negatives.any?
   end
 
   def negatives
@@ -15,7 +15,7 @@ module StringCalculator
   end
 
   def digits
-    @digits ||= gsub("\n",delimiter).split(delimiter).map{|x| x.to_i}
+    @digits ||= gsub("\n", delimiter).split(delimiter).map{|x| x.to_i}
   end
 
   def delimiter
