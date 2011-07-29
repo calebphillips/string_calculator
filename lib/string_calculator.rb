@@ -1,9 +1,7 @@
 module StringCalculator
-
   def add
-    return 0 if empty?
     raise_if_negatives
-    digits.reduce {|sum,d| sum + d}
+    digits.reduce(0, :+) 
   end
 
   def raise_if_negatives
@@ -11,13 +9,13 @@ module StringCalculator
   end
 
   def negatives
-    @negatives ||= digits.select {|x| x<0}
+    @negatives ||= digits.select {|d| d < 0}
   end
 
   def digits
-    @digits ||= gsub("\n", delimiter).split(delimiter).map{|x| x.to_i}
+    @digits ||= gsub("\n", delimiter).split(delimiter).map(&:to_i)
   end
-
+  
   def delimiter
     @delimiter ||= has_custom_delimiter? ? custom_delimiter : ','
   end

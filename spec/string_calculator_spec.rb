@@ -73,11 +73,15 @@ describe StringCalculator, "#add" do
 
   context "negative numbers" do
     it "raises an exception if it finds one" do
-      lambda { "-1".extend(StringCalculator).add }.should raise_error
+      expect {
+        "-1".extend(StringCalculator).add
+      }.to raise_error
     end
 
     it "includes the negatives in the error message" do
-      lambda {"-1,2,-25".extend(StringCalculator).add }.should raise_error("Negatives not allowed: -1, -25")
+      expect {
+        "-1,2,-25".extend(StringCalculator).add
+      }.to raise_error "Negatives not allowed: -1, -25"
     end
   end
 end
